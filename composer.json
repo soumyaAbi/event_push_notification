@@ -1,0 +1,22 @@
+{
+	"name": "soumyaAbi/event_push_notification",
+	"description": "WordPress plugin to send push notification when an event is created",
+	"homepage": "https://github.com/soumyaAbi/event_push_notification",
+	"keywords": [
+		"wordpress"
+	],
+	"authors": [
+		{
+			"name": "Jay Krishnan G",
+                	"email": "jaykrishnan.g@gmail.com"
+		}
+	],
+	"support"    : {
+			"issues": "https://github.com/soumyaAbi/event_push_notification/issues",
+			"source": "https://github.com/soumyaAbi/event_push_notification"
+	},
+	"type": "wordpress-plugin",
+	"require": {
+		"composer/installers": "~1.0"
+	 }
+}
