@@ -11,14 +11,14 @@ class Push_Notification
 {
     function __construct()
     {
-        add_action('publish_events', 'Push_Notification::iphone_push_notification');
-        add_action('publish_events', 'Push_Notification::android_push_notification');
+        add_action('publish_event', 'Push_Notification::android_push_notification');
+        add_action('publish_event', 'Push_Notification::iphone_push_notification');
     }
 
     function android_push_notification($post_ID)
     {
         $post_status = get_post_status();
-
+        
         if($post_status == 'auto-draft' || $post_status == 'draft')
         {
             ignore_user_abort();
@@ -31,10 +31,11 @@ class Push_Notification
 
             $arg2 = escapeshellarg($title);
 
-            //$phpPath         = "D:\wamp\bin\php\php5.4.16\php.exe";
-            $phpPath         = "php";
+            $phpPath          = "/usr/bin/php";
+            //$phpPath         = "php";
 
-            $filePath        = ABSPATH . "push_notification/android_push_notification.php" ;
+            $dir_path        = realpath(ABSPATH . '/..');
+            $filePath        = $dir_path . "/app/push_notification/android_push_notification.php" ;
 
             //check if server machine is windows or linux
             if ( strtoupper( substr( PHP_OS, 0, 3 ) ) == 'WIN' )
@@ -73,8 +74,10 @@ class Push_Notification
             $arg2 = escapeshellarg($title);
 
             //$phpPath         = "D:\wamp\bin\php\php5.4.16\php.exe";
-            $phpPath         = "php";
-            $filePath        = ABSPATH . "push_notification/ios_push_notification.php" ;
+            $phpPath         = "/usr/bin/php";
+            
+            $dir_path        = realpath(ABSPATH . '/..');
+            $filePath        = $dir_path . "/app/push_notification/ios_push_notification.php" ;
 
             //check if server machine is windows or linux
             if ( strtoupper( substr( PHP_OS, 0, 3 ) ) == 'WIN' )
